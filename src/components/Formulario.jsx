@@ -13,6 +13,8 @@ const Forumulario = () => {
         sintomas:""
     })
 
+    const [error, setError] = useState(false)
+
     //funcion cada que el usuario escribe
 
     const actualizarState = e =>{ 
@@ -27,11 +29,32 @@ const Forumulario = () => {
 
     const { mascota, propietario, fecha, hora, sintomas} = cita;
 
+    //cuando presiona agregar Cita
+
+    const submitCita = e  =>{
+        e.preventDefault();
+
+        //validar
+        if (mascota.trim() ===''|| propietario.trim() ==='' || fecha.trim() ===''
+        || hora.trim() ==='' || sintomas.trim() ==='') {
+            setError(true)
+            return;
+        }
+
+        //asignar ID
+
+        //crear la cita
+
+
+        //Reiniciar el Form
+    }
 
     return (   
         <Fragment >
             <h2>Crear Cita</h2>
-            <form action="">
+            {error ?  <p className="alerta-error">Todos los Campos son Obligatorios</p>  :null}
+            <form onSubmit={submitCita}
+            >
                 <label >Pet name</label>
                 <input 
                     type="text"
@@ -77,7 +100,7 @@ const Forumulario = () => {
 
                 </textarea>
 
-                <button type="button"
+                <button type="submit"
                 className="u-full-width button-primary">
                 Agregar Cita
                 </button>
