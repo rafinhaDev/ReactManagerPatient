@@ -1,5 +1,6 @@
 
 import React, {Fragment, useState} from 'react';
+import Cita from './components/Cita.jsx'
 import Forumulario from './components/Formulario';
 
 
@@ -12,7 +13,9 @@ function App() {
   // funcion que tome las citas actuales y agregue la nueva
   
   const crearCita = cita =>{
-    setCitas({  ...citas,  cita
+    setCitas({ 
+    ...citas,
+      cita
     })
   }
 
@@ -28,7 +31,14 @@ function App() {
                
           </div>
           <div className="one-half column">
-              2
+              <h2>Administrar Citas</h2>
+             {citas.map(cita => (
+              <Cita 
+              key={cita.id}
+              cita={cita}
+              />
+
+             ))}
           </div>
         
         </div>
