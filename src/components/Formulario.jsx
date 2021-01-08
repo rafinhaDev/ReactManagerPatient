@@ -1,7 +1,7 @@
-
+import uuid from 'react-uuid'
 import React, {Fragment, useState} from 'react';
 
-const Forumulario = () => {
+const Forumulario = ({crearCita}) => {
 
     //Create State
 
@@ -41,12 +41,26 @@ const Forumulario = () => {
             return;
         }
 
+        //eliminar mensaje de validacion
+        setError(false)
+
         //asignar ID
+        cita.id = uuid();
+
+        console.log(cita)
 
         //crear la cita
-
+        crearCita(cita)
 
         //Reiniciar el Form
+
+        setCita({
+        mascota:"",
+        propietario:"",
+        fecha:"",
+        hora:"",
+        sintomas:""
+        })
     }
 
     return (   

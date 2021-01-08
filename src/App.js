@@ -1,9 +1,21 @@
 
-import React, {Fragment} from 'react';
+import React, {Fragment, useState} from 'react';
 import Forumulario from './components/Formulario';
 
 
+
 function App() {
+  // arreglo de citas
+  
+  const [citas, setCitas] = useState([])
+  
+  // funcion que tome las citas actuales y agregue la nueva
+  
+  const crearCita = cita =>{
+    setCitas({  ...citas,  cita
+    })
+  }
+
   return (
     <Fragment>
 
@@ -12,7 +24,7 @@ function App() {
       <div className="container">
         <div className="row">
           <div className="one-half column">
-             <Forumulario />
+             <Forumulario crearCita={crearCita} />
                
           </div>
           <div className="one-half column">
